@@ -54,7 +54,9 @@
               @click.stop.prevent="addFollowing(user.id)"
             >
               追蹤
-            </button>
+            </button> &nbsp; &nbsp;
+            <!-- 路由跳轉edit頁面 傳參數(userId),edit取得id並post(id)伺服器發請求取得user數據 -->
+            <button class="btn btn-primary" @click="goEdit(user.id)" >編輯</button>
           </template>
         </div>
       </div>
@@ -89,7 +91,14 @@ export default {
     },
     deleteFollowing (userId) {
       this.isFollowed = false
+    },
+    goEdit(userId){
+      this.$router.push({
+        name:'users-edit',
+        params:{id:userId}
+      })
     }
-  }
+  },
+ 
 }
 </script>

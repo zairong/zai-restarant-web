@@ -12,12 +12,11 @@ export default [
     name: 'signup',
     component: () => import('@/views/SignUp')
   },
-  //Restaurants
+  //restaurants/
   {
-    path: '/restaurants',
-    name: 'restaurants',
+    name: "restaurants",
+    path: "/restaurants",
     component: () => import('@/views/Restaurants'),
-
   },
   //restaurants/feeds
   {
@@ -25,11 +24,42 @@ export default [
     path: "/restaurants/feeds",
     component: () => import('@/views/Restaurants/Feeds'),
   },
-  //admin/restaurants
+  //restaurants/top
+  {
+    name: "top",
+    path: "/restaurants/top",
+    component: () => import('@/views/Restaurants/Top'),
+
+  },
+  //Restaurant/:id? 要放在 top和feed之後 不然只會跳轉到:id
+  {
+    path: '/restaurants/:id?',
+    name: 'restaurant',
+    component: () => import('@/views/Restaurants/Restaurant')
+  },
+  //restaurants/:id?/dashboard
+  {
+    path: '/restaurants/:id?/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/Restaurants/Restaurant/dashboard')
+  },
+  //admin/ 重定向
   {
     path: '/admin',
     exact: true,
     redirect: '/admin/restaurants'
+  },
+  //admin-categories
+  {
+    path: '/admin/admincategories',
+    name: 'admin-categories',
+    component: () => import('@/views/AdminCategories')
+  },
+  //admin-categories
+  {
+    path: '/admin/users',
+    name: 'admin-users',
+    component: () => import('@/views/AdminUsers')
   },
   //admin-restaurants
   {
@@ -55,38 +85,31 @@ export default [
     name: 'admin-restaurant-edit',
     component: () => import('@/views/AdminRestaurantEdit')
   },
-  //restaurants/top
-  {
-    name: "top",
-    path: "/restaurants/top",
-    component: () => import('@/views/Restaurants/Top'),
-
-  },
-  //Restaurant 要放在 top和feed之後 不然只會跳轉到:id
-  {
-    path: '/restaurants/:id?',
-    name: 'restaurant',
-    component: () => import('@/views/Restaurants/Restaurant')
-  },
-  //dashboard
-  {
-    path: '/restaurants/:id?/dashboard',
-    name: 'dashboard',
-    component: () => import('@/views/Restaurants/Restaurant/dashboard')
-  },
-  //users/top
-  ,
-  {
-    name: "top",
-    path: "/users/top",
-    component: () => import('@/views/Users/Top'),
-  },
+  //users
   {
     name: "users",
     path: "/users",
     component: () => import('@/views/Users'),
-    redirect:"/users/top"
   },
+  //users/top
+  {
+    name: "usertop",
+    path: "/users/top",
+    component: () => import('@/views/Users/UsersTop'),
+  },
+  //users/:id?
+  {
+    name: "user",
+    path: "/users/:id?",
+    component: () => import('@/views/Users/User'),
+  },
+  //users/:id?/edit
+  {
+    name: "users-edit",
+    path: "/users/:id?/edit",
+    component: () => import('@/views/Users/UserEdit'),
+  },
+  //首頁
   {
     path: '/',
     name: 'root',
